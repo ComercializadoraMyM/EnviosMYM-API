@@ -1,0 +1,42 @@
+###
+GET http://localhost:3001/api/guia
+
+###
+GET http://localhost:3001/api/cliente
+
+###
+GET http://localhost:3001/api/tracking
+
+###
+POST  http://localhost:3001/api/guia
+content-type: application/json
+
+{
+    "guia": {
+    "infGuia": {"nomb":"David Mejia","fecha":"2021-03-11T10:02"},
+    "destinatario":{"nombre":"Camilo Pardo","tipoDocumento":"7489667","documento":"123","pais":"Colombia","ciudad":"Bogota","direccion":"Cra 74","vlrUnidad":"3.8","vlrSeguro":"5"},
+    "datosEnvio":{"tipoEmpaque":"Caja","largo":"10","alto":"10","ancho":"10","unidad":"cm","descripcion":"Caja"},
+    "vlrLiquidacion":{"undPeso":"lb","peso":"10","vlrDeclarado":"50","tipoPago":"pospago","medioPago":"Efectivo","tipoEnvio":"Personal","paisPago":"Colombia"},
+    "costoEnvio":{"tipEnvioNal":"Contado"},
+    "status":"Guia creada"
+}}
+
+###
+# POST  http://localhost:3001/api/cliente
+# content-type: application/json
+
+# {"cliente": 
+#     {
+#         "tipoid":"cc",
+#         "numid":"",
+#         "nombre":"pru",
+#         "email":"pru@egecol.com",
+#         "telefono":"123",
+#         "pais":"Colombia",
+#         "ciudad":"Bogota",
+#         "direccion":"pru",
+#         "unidad":"lb",
+#         "vlrUnidad":{"$numberDouble":"3"},
+#         "vlrSeguro":{"$numberDouble":"5.0"}
+#     }
+# }
