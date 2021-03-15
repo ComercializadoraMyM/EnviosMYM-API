@@ -32,9 +32,6 @@ router.post("/", async(req, res) => {
         try {
             await client.connect();
             await client.db("EnviosDB").command({ ping: 1 });
-            console.log("Connected successfully to server");
-            console.log(guia);
-            console.log(JSON.parse(guia));
             const guiaAdd = client.db("EnviosDB").collection("Guias").insertOne(JSON.parse(guia));
             res.send("saved");
         } catch (error){

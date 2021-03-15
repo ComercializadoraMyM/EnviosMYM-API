@@ -1,14 +1,14 @@
 ###
-GET http://localhost:3001/api/guia
+GET https://envios-mym-api.vercel.app/guia
 
 ###
-GET http://localhost:3001/api/cliente
+GET http://localhost:3001/guia
 
 ###
-GET http://localhost:3001/api/tracking
+GET http://localhost:3001/tracking
 
 ###
-POST  http://localhost:3001/api/guia
+POST  http://localhost:3001/guia
 content-type: application/json
 
 {

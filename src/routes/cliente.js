@@ -9,7 +9,6 @@ router.get("/", async (req, res) => {
     try {
         await client.connect();
         await client.db("EnviosDB").command({ ping: 1 });
-        //const projection = { _id:0, nombre: 1 };
         const clientes = client.db("EnviosDB").collection("Clientes").find();
         var respuesta = [];
         await clientes.forEach(function(cliente){
@@ -33,9 +32,8 @@ router.post("/", async(req, res) => {
         try {
             await client.connect();
             await client.db("EnviosDB").command({ ping: 1 });
-            console.log(cliente);
-            console.log(JSON.parse(cliente));
-            const clienteAdd = client.db("EnviosDB").collection("Guias").insertOne(cliente);
+            const clienteAdd = client.db("EnviosDB").collection("Clientes").insertOne(JSON.parse(cliente));
+            console.log('adicion', cliente)
             res.send("saved");
         } catch (error){
             console.log(error);
