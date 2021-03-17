@@ -23,9 +23,8 @@ router.get("/", async (req, res) => {
     } 
 });
 
-let idGuia = '';
-
 router.get("/:id", async (req, res) => {
+    let idGuia = '';
     const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
     const client = new MongoClient(uri);
     idGuia = req.params.id;
@@ -70,16 +69,17 @@ router.post("/", async(req, res) => {
     }
 });
 
-let statusUp= '';
 
-router.post("/:estado/:id", async(req, res) => {    
+
+router.post("/:estado/:id", async(req, res) => {  
+    let statusUp= '';  
+    let idGuia = '';
     const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
     const client = new MongoClient(uri);
-    const { guia } = req.body;
     statusUp = req.params.estado;
     idGuia = req.params.id;
     console.log(statusUp+' '+idGuia);
-    if (guia) {
+    if (idGuia) {
         try {
             await client.connect();
             await client.db("EnviosDB").command({ ping: 1 });
