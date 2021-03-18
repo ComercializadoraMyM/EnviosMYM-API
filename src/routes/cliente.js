@@ -5,7 +5,6 @@ const router = Router();
 router.get("/", async (req, res) => {
     const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
     const client = new MongoClient(uri);
-
     try {
         await client.connect();
         await client.db("EnviosDB").command({ ping: 1 });
@@ -27,7 +26,6 @@ router.post("/", async(req, res) => {
     const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
     const client = new MongoClient(uri);
     const { cliente } = req.body;
-
     if (cliente) {
         try {
             await client.connect();

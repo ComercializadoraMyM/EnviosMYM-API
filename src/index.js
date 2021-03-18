@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 //settings
-app.set("port", process.env.PORT || 3001);
+app.set("port", process.env.PORT || 443);
 app.set("json spaces", 2);
 
 //middleware
