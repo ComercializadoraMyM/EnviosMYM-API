@@ -45,18 +45,13 @@ router.post("/", async(req, res) => {
     }
 });
 
-
-
 router.post("/:whr/:id", async(req, res) => {  
     let whrUp = '';
     let idTrack= '';  
     const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
     const client = new MongoClient(uri);
-    const { tracking } = req.body;
     whrUp = req.params.whr;
     idTrack = req.params.id;
-    console.log(whrUp+' '+idTrack);
-
     if (idTrack) {
         try {
             await client.connect();
@@ -75,6 +70,25 @@ router.post("/:whr/:id", async(req, res) => {
     } else {
         res.send("wrong request");
     }
+});
+
+router.delete("/:id", async (req, res) => {
+    let idGuia = '';
+    const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
+    const client = new MongoClient(uri);
+    idGuia = req.params.id;
+    try {
+        await client.connect();
+        const query = { _id: ObjectID(idGuia) };
+        const result = await client.db("EnviosDB").collection("Tracking").deleteOne(query);
+        if (result.deletedCount === 1) {
+          console.dir("Successfully deleted one document.");
+        } else {
+          console.log("No documents matched the query. Deleted 0 documents.");
+        }
+      } finally {
+        await client.close();
+      }
 });
 
 module.exports = router;

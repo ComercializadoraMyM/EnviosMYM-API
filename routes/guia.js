@@ -98,4 +98,23 @@ router.post("/:estado/:id", async(req, res) => {
     }
 });
 
+router.delete("/:id", async (req, res) => {
+    let idGuia = '';
+    const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
+    const client = new MongoClient(uri);
+    idGuia = req.params.id;
+    try {
+        await client.connect();
+        const query = { _id: ObjectID(idGuia) };
+        const result = await client.db("EnviosDB").collection("Guias").deleteOne(query);
+        if (result.deletedCount === 1) {
+          console.dir("Successfully deleted one document.");
+        } else {
+          console.log("No documents matched the query. Deleted 0 documents.");
+        }
+      } finally {
+        await client.close();
+      }
+});
+
 module.exports = router;

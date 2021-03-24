@@ -1,0 +1,8 @@
+
+GET http://localhost:3001/api/clientes
+
+###
+DELETE http://localhost:3001/api/trackings/605b5d23b52155001543f4ad
+
+###
+POST http://localhost:3001/api/clientes/3/605b47bdb52155001543f4ab
