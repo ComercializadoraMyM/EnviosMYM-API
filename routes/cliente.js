@@ -84,7 +84,7 @@ router.post("/seguro/:vlrSeguro/:id", async(req, res) => {
             await client.connect();
             await client.db("EnviosDB").command({ ping: 1 });
             const query = {_id: ObjectID(idCliente)};
-            const updateDocument = { $set: { vlrSeguro: vlrTarifaUp } };
+            const updateDocument = { $set: { vlrSeguro: vlrSeguroUp } };
             const guiaUpdate = client.db("EnviosDB").collection("Clientes").updateOne(query, updateDocument);
             console.log(guiaUpdate);
             res.send("saved");
