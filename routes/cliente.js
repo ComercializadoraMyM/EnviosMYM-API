@@ -44,7 +44,7 @@ router.post("/", async(req, res) => {
     }
 });
 
-router.post("/:vlrTarifa/:id", async(req, res) => {  
+router.post("/tarifa/:vlrTarifa/:id", async(req, res) => {  
     let vlrTarifaUp = '';
     let idCliente= '';  
     const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
@@ -71,7 +71,7 @@ router.post("/:vlrTarifa/:id", async(req, res) => {
     }
 });
 
-router.post("/:vlrSeguro/:id", async(req, res) => {  
+router.post("/seguro/:vlrSeguro/:id", async(req, res) => {  
     console.log('entraa')
     let vlrSeguroUp = '';
     let idCliente= '';  
