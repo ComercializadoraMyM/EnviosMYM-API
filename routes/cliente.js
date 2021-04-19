@@ -72,7 +72,6 @@ router.post("/tarifa/:vlrTarifa/:id", async(req, res) => {
 });
 
 router.post("/seguro/:vlrSeguro/:id", async(req, res) => {  
-    console.log('entraa')
     let vlrSeguroUp = '';
     let idCliente= '';  
     const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
@@ -86,6 +85,33 @@ router.post("/seguro/:vlrSeguro/:id", async(req, res) => {
             const query = {_id: ObjectID(idCliente)};
             const updateDocument = { $set: { vlrSeguro: vlrSeguroUp } };
             const guiaUpdate = client.db("EnviosDB").collection("Clientes").updateOne(query, updateDocument);
+            res.send("saved");
+        } catch (error){
+            console.log(error);
+        } 
+        finally {
+            await client.close();
+        } 
+    } else {
+        res.send("wrong request");
+    }
+});
+
+
+router.post("/direccion/:direccion/:id", async(req, res) => {  
+    let direccionUp = '';
+    let idCliente= '';  
+    const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
+    const client = new MongoClient(uri);
+    direccionUp = req.params.direccion;
+    idCliente = req.params.id;
+    if (idCliente) {
+        try {
+            await client.connect();
+            await client.db("EnviosDB").command({ ping: 1 });
+            const query = {_id: ObjectID(idCliente)};
+            const updateDocument = { $set: { direccion: direccionUp } };
+            const guiaUpdate = client.db("EnviosDB").collection("Clientes").updateOne(query, updateDocument);
             console.log(guiaUpdate);
             res.send("saved");
         } catch (error){
@@ -98,5 +124,6 @@ router.post("/seguro/:vlrSeguro/:id", async(req, res) => {
         res.send("wrong request");
     }
 });
+
 
 module.exports = router;
