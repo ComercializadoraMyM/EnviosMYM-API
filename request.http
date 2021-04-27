@@ -1,5 +1,5 @@
 
-GET http://localhost:3001/api/clientes
+GET http://localhost:3001/api/guias/MYM-2021-63
 
 ###
 DELETE http://localhost:3001/api/trackings/605b5d23b52155001543f4ad
