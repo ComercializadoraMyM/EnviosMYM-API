@@ -1,5 +1,5 @@
 
-GET http://localhost:3001/api/guias/MYM-2021-63
+GET http://localhost:3001/api/usuarios/MYMUser10-20/d1b088beed9640cb20834bb265e589d5d0ae49d43b9a14d93502c6db6cbf739a
 
 ###
 DELETE http://localhost:3001/api/trackings/605b5d23b52155001543f4ad
