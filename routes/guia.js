@@ -98,6 +98,33 @@ router.post("/:estado/:id", async(req, res) => {
     }
 });
 
+router.post("/whr/:whr/:id", async(req, res) => {  
+    let whrUp= '';  
+    let idGuia = '';
+    const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
+    const client = new MongoClient(uri);
+    whrUp = req.params.whr;
+    idGuia = req.params.id;
+    console.log(whrUp+' '+idGuia);
+    if (idGuia) {
+        try {
+            await client.connect();
+            await client.db("EnviosDB").command({ ping: 1 });
+            const query = {_id: ObjectID(idGuia)};
+            const updateDocument = { $set: { whr: whrUp } };
+            const guiaUpdate = client.db("EnviosDB").collection("Guias").updateOne(query, updateDocument);
+            res.send("saved");
+        } catch (error){
+            console.log(error);
+        } 
+        finally {
+            await client.close();
+        } 
+    } else {
+        res.send("wrong request");
+    }
+});
+
 router.delete("/:id", async (req, res) => {
     let idGuia = '';
     const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";

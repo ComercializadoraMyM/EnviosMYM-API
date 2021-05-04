@@ -1,8 +1,9 @@
 
-GET http://localhost:3001/api/usuarios/MYMUser10-20/d1b088beed9640cb20834bb265e589d5d0ae49d43b9a14d93502c6db6cbf739a
+GET http://localhost:3001/api/guias/MYM-2021-67
+
 
 ###
 DELETE http://localhost:3001/api/trackings/605b5d23b52155001543f4ad
 
 ###
-POST http://localhost:3001/api/clientes/direccion/3mil/607d81a06e53c8001590df7e
+POST http://localhost:3001/api/guias/whr/333/6091addc13ff6700150ffae0
