@@ -100,11 +100,10 @@ router.get("/:id", async (req, res) => {
         await client.connect();
         await client.db("EnviosDB").command({ ping: 1 });
         const query = {track_id: idGuia};
-        const guias = client.db("EnviosDB").collection("Entradas").find(query);
+        const guias = client.db("EnviosDB").collection("Tracking").find(query);
         var respuesta = [];
         await guias.forEach(function(guia){
             respuesta.push(guia);
-            
         });
         res.send(respuesta);
     } catch (error){
