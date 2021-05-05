@@ -91,4 +91,28 @@ router.delete("/:id", async (req, res) => {
       }
 });
 
+router.get("/:id", async (req, res) => {
+    let idGuia = '';
+    const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
+    const client = new MongoClient(uri);
+    idGuia = req.params.id;
+    try {
+        await client.connect();
+        await client.db("EnviosDB").command({ ping: 1 });
+        const query = {track_id: idGuia};
+        const guias = client.db("EnviosDB").collection("Entradas").find(query);
+        var respuesta = [];
+        await guias.forEach(function(guia){
+            respuesta.push(guia);
+            
+        });
+        res.send(respuesta);
+    } catch (error){
+        console.log(error);
+    } 
+    finally {
+        await client.close();
+    } 
+});
+
 module.exports = router;
