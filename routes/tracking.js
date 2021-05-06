@@ -114,4 +114,28 @@ router.get("/:id", async (req, res) => {
     } 
 });
 
+router.get("/usuario/:nombre", async (req, res) => {
+    let nombUp = '';
+    const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
+    const client = new MongoClient(uri);
+    nombUp = req.params.nombre;
+    try {
+        await client.connect();
+        await client.db("EnviosDB").command({ ping: 1 });
+        const query = {"nombreCliente": nombUp};
+        const guias = client.db("EnviosDB").collection("Tracking").find(query);
+        console.log(nombUp);
+        var respuesta = [];
+        await guias.forEach(function(guia){
+            respuesta.push(guia);
+        });
+        res.send(respuesta);
+    } catch (error){
+        console.log(error);
+    } 
+    finally {
+        await client.close();
+    } 
+});
+
 module.exports = router;
