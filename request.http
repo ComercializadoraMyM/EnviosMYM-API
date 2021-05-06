@@ -1,5 +1,5 @@
 
-GET http://localhost:3001/api/guias/MYM-2021-67
+GET http://localhost:3001/api/guias/usuario/Nicole%20Hernandez
 
 
 ###
@@ -7,3 +7,7 @@ DELETE http://localhost:3001/api/trackings/605b5d23b52155001543f4ad
 
 ###
 POST http://localhost:3001/api/guias/whr/333/6091addc13ff6700150ffae0
+
+###
+POST https://envios-api-service.herokuapp.com/api/trackings/0/60929dbbcaea4600156c13d5
+
