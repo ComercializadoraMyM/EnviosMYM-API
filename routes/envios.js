@@ -31,7 +31,7 @@ router.get("/:id", async (req, res) => {
     try {
         await client.connect();
         await client.db("EnviosDB").command({ ping: 1 });
-        const query = {numGuia: idGuia};
+        const query = {datosEnvio:{numGuia: idGuia}};
         const guias = client.db("EnviosDB").collection("Envios").find(query);
         var respuesta = [];
         await guias.forEach(function(guia){
