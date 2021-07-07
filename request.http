@@ -2,7 +2,7 @@
 GET http://localhost:3001/api/guias/usuario/nombre
 
 ###
-GET http://localhost:3001/api/envios
+GET http://localhost:3001/api/envios/m
 
 ###
 POST http://localhost:3001/api/envios
