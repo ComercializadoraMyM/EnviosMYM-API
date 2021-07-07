@@ -1,6 +1,8 @@
 
 GET http://localhost:3001/api/guias/usuario/nombre
 
+###
+GET http://localhost:3001/api/envios
 
 ###
 DELETE http://localhost:3001/api/trackings/605b5d23b52155001543f4ad

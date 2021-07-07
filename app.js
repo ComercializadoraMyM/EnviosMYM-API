@@ -9,6 +9,7 @@ var indexCliente = require('./routes/cliente.js');
 var indexGuia = require('./routes/guia.js');
 var indexTracking = require('./routes/tracking.js');
 var usuarios = require('./routes/users.js');
+var envios = require('./routes/envios.js');
 
 var app = express();
 app.use(cors());
@@ -25,6 +26,7 @@ app.use('/api/clientes', indexCliente);
 app.use('/api/guias', indexGuia);
 app.use('/api/trackings', indexTracking);
 app.use('/api/usuarios', usuarios);
+app.use('/api/envios', envios);
 
 app.use(function (req, res, next) {
   next(createError(404));
