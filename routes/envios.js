@@ -1,4 +1,4 @@
-const { Router } = require("express");
+const { Router, request } = require("express");
 const { MongoClient, ObjectID } = require("mongodb");
 const router = Router();
 
@@ -31,7 +31,7 @@ router.get("/:id", async (req, res) => {
     try {
         await client.connect();
         await client.db("EnviosDB").command({ ping: 1 });
-        const query = {codBar: idGuia};
+        const query = {numGuia: idGuia};
         const guias = client.db("EnviosDB").collection("Envios").find(query);
         var respuesta = [];
         await guias.forEach(function(guia){
@@ -51,7 +51,6 @@ router.post("/", async(req, res) => {
     const uri = "mongodb+srv://Maria:123@envios.vnbfn.mongodb.net/EnviosDB?retryWrites=true&w=majority";
     const client = new MongoClient(uri);
     const { guia } = req.body;
-
     if (guia) {
         try {
             await client.connect();
