@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
     try {
         await client.connect();
         await client.db("EnviosDB").command({ ping: 1 });
-        const clientes = client.db("EnviosDB").collection("Clientes").find();
+        const clientes = client.db("EnviosDB").collection("Clientes").find().sort({nombre:1})
         var respuesta = [];
         await clientes.forEach(function(cliente){
             respuesta.push(cliente);
